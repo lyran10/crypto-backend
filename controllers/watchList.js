@@ -6,12 +6,14 @@ const {
 } = require("../modules/watchList.js");
 
 const addToWatchList = (req, res) => {
+
   const {id,coin} = req.body
   _addToWatchList(id,coin)
     .then((data) => {
       res.json({ list: data });
     })
     .catch((err) => {
+      console.log(err)
       res.json({ error: err });
     });
 };
@@ -32,7 +34,7 @@ const checkInList = (req, res) => {
 };
 
 const getList = (req, res) => {
-  _getList(req.body.user_id.id)
+  _getList(req.body.user_id.user_id)
     .then((data) => {
       if (data.length !== 0) {
         res.json({ status: true, data: data });
@@ -41,16 +43,19 @@ const getList = (req, res) => {
       }
     })
     .catch((error) => {
+      console.log(error)
       res.json({ status: false, error: error });
     });
 };
 
 const deleteCoin = (req, res) => {
+  console.log(req.body)
   _deleteCoin(req.body.id)
     .then((data) => {
       res.json({ list: data });
     })
     .catch((err) => {
+      console.log(err)
       res.json({ error: err });
     });
 };

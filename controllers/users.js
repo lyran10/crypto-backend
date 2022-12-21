@@ -33,7 +33,7 @@ const createUser = async (req, res) => {
   let password = user_password.toString();
   let hashPassword = await bcrypt.hash(password, 10);
 
-  _checkUserExists(req.body.user_name).then((result) => {
+  _checkUserExists(user_name).then((result) => {
     if (result.length >= 1) {
       return res.json({
         Registered: "name Already Registered",
@@ -49,13 +49,13 @@ const createUser = async (req, res) => {
     _createUser(obj)
       .then((data) => {
         const token = createToken(data[0].id);
-
         return res
           .status(201)
           .json({ user: data[0].id, token: token, created: true });
       })
       .catch((err) => {
-        res.status(404).json({ msg: "not found" });
+        console.log(err)
+        res.status(404).json({error : err, msg: "not found" });
       });
   });
 };
@@ -65,24 +65,25 @@ const userLogin = async (req, res) => {
   _userLogin(user_name)
     .then((data) => {
       if (data.length === 0) {
+        console.log("user does not exist")
         return res.json({ notExists: "Invalid User Name", status: false });
       }
       if ((user_password, data[0])) {
         if (bcrypt.compareSync(user_password, data[0].user_password)) {
-          const token = createToken(data[0].id);
+          const token = createToken(data[0].user_id);
 
-          _updateSessionID(data[0].id, token.accessToken)
-            .then((data) => res.json({user : data[0]}))
-            .catch((err) => res.json({err : err.message}));
+          _updateSessionID(data[0].user_id, token.accessToken)
+            .then((data) => 
+            console.log()
+            )
+            .catch((err) => console.log(err));
 
           return res
-            .status(201)
             .cookie("token", token.refToken, {
               withCredentials: true,
               httpOnly: true,
               secure : true
-            })
-            .send({ status: true, user: data[0] });
+            }).status(201).json({ status: true, user: data[0]})
         } else {
           return res.json({ notExists: "Invalid Password", status: false });
         }
@@ -94,6 +95,7 @@ const userLogin = async (req, res) => {
 };
 
 const getToken = (req, res) => {
+  console.log(req.body)
   _token(req.body.id)
     .then((data) => {
       res.status(201).json({ status: true, user: data });

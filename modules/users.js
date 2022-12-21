@@ -1,11 +1,12 @@
 let db = require("../connections/connections.js");
 
 const _checkUserExists = (user) => {
+  console.log(user)
   return db("users").where({ user_name: user }).returning("*");
 };
 
 const _checkToken = (id) => {
-  return db("users").where({ id: id }).returning("*");
+  return db("users").where({ user_id: id }).returning("*");
 };
 
 const _createUser = (obj) => {
@@ -17,20 +18,21 @@ const _userLogin = (user) => {
 };
 
 const _updateSessionID = (id, data) => {
+  console.log(data)
   return db("users")
     .update("session_id", data)
-    .where({ id: id })
+    .where({ user_id: id })
     .returning("*");
 };
 
 const _token = (id) => {
-  return db("users").where({ id: id }).returning("*");
+  return db("users").where({ user_id: id }).returning("*");
 };
 
 const _removeToken = (id, data) => {
   return db("users")
     .update("session_id", data)
-    .where({ id: id })
+    .where({ user_id: id })
     .returning("*");
 };
 
