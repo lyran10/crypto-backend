@@ -18,7 +18,6 @@ const _userLogin = (user) => {
 };
 
 const _updateSessionID = (id, data) => {
-  console.log(data)
   return db("users")
     .update("session_id", data)
     .where({ user_id: id })
