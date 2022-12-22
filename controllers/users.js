@@ -62,8 +62,10 @@ const createUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
   const { user_name, user_password } = req.body;
+  console.log(req.body)
   _userLogin(user_name)
     .then((data) => {
+      console.log(data)
       if (data.length === 0) {
         console.log("user does not exist")
         return res.json({ notExists: "Invalid User Name", status: false });
@@ -72,7 +74,7 @@ const userLogin = async (req, res) => {
         if (bcrypt.compareSync(user_password, data[0].user_password)) {
           const token = createToken(data[0].user_id);
 
-          _updateSessionID(data[0].user_id, token.accessToken)
+          _updateSessionID(data[0].user_id,token.accessToken)
             .then((data) => 
             console.log()
             )

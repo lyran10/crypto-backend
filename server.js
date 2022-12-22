@@ -12,6 +12,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/", router);
 
+// app.get("/hello",(req,res) => {
+//     res.json({"msg" : "hello"})
+// })
+
 app.listen(process.env.PORT, () => {
   console.log(`running on ${process.env.PORT}`);
 });
