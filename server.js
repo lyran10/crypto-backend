@@ -7,14 +7,10 @@ const router = require("./routes/routes.js");
 const path = require("path")
 dotenv.config();
 
-app.use(cors({ origin: "https://crypto-backend-girw.onrender.com", credentials: true }));
+app.use(cors({ origin:"https://crypto-backend-girw.onrender.com", credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/", router);
-
-// app.get("/hello",(req,res) => {
-//     res.json({"msg" : "hello"})
-// })
 
 app.listen(process.env.PORT, () => {
   console.log(`running on ${process.env.PORT}`);

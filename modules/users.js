@@ -13,8 +13,8 @@ const _createUser = (obj) => {
   return db("users").insert(obj).returning("*");
 };
 
-const _userLogin = (user) => {
-  return db("users").where({ user_name: user }).returning("*");
+const _userLogin = async (user) => {
+  return await db("users").where({ user_name: user }).returning("*");
 };
 
 const _updateSessionID = (id, data) => {
