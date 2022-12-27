@@ -1,7 +1,6 @@
 // connecting to the data base
 const knex = require('knex');
 const dotenv = require('dotenv');
-const { Client } = require('pg').native;
 
 // connecting to .env
 dotenv.config();
