@@ -13,7 +13,9 @@ const db = knex({
     user:process.env.DB_USER,
     password:process.env.DB_PASS,
     database:process.env.DB_NAME,
-    ssl:{rejectUnauthorized:true}
+    ssl:{rejectUnauthorized:true},
+    idleTimeoutMillis: 0,
+    connectionTimeoutMillis : 0
   },
   acquireConnectionTimeout: 5000,
   pool: {
@@ -21,7 +23,6 @@ const db = knex({
     max: 10,
     createTimeoutMillis: 8000,
     acquireTimeoutMillis: 8000,
-    idleTimeoutMillis: 8000,
     reapIntervalMillis: 1000,
     createRetryIntervalMillis: 100,
   },
