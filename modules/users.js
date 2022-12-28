@@ -20,12 +20,12 @@ const _userLogin = async (user) => {
 const _updateSessionID = (id, data) => {
   return db("users")
     .update("session_id", data)
-    .where({ user_id: id })
+    .where({user_id: id})
     .returning("*");
 };
 
 const _token = (id) => {
-  return db("users").where({ user_id: id }).returning("*");
+  return db("users").where({user_id: "1"}).returning("*");
 };
 
 const _removeToken = (id, data) => {
