@@ -98,15 +98,15 @@ const userLogin = async (req, res) => {
 
 const getToken = (req, res) => {
   console.log(req.body.id)
-  _token(req.body.id)
-    .then((data) => {
-      console.log(data)
-      res.status(201).json({ status: true, user: data });
-    })
-    .catch((err) => {
-      console.log(err)
-      res.status(403).json({ status: false, error: err });
-    });
+  // _token(req.body.id)
+  //   .then((data) => {
+  //     console.log(data)
+  //     res.status(201).json({ status: true, user: data });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //     res.status(403).json({ status: false, error: err });
+  //   });
 };
 
 const removeToken = (req, res) => {
