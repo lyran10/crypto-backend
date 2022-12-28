@@ -6,9 +6,10 @@ const cors = require("cors");
 const router = require("./routes/routes.js");
 const path = require("path")
 dotenv.config();
-const {connectDB} = require("../backend/connections/connections.js")
+const db = require("./connections/connections.js")
 
-connectDB()
+console.log(db())
+// connectDB()
 
 app.use(cors({ origin:"https://crypto-backend-girw.onrender.com", credentials: true }));
 app.use(cookieParser());
