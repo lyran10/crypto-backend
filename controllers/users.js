@@ -100,6 +100,7 @@ const getToken = (req, res) => {
   console.log(req.body.user_id)
   _token(req.body.user_id)
     .then((data) => {
+      console.log(data)
       res.status(201).json({ status: true, user: data });
     })
     .catch((err) => {
