@@ -103,6 +103,7 @@ const getToken = (req, res) => {
       res.status(201).json({ status: true, user: data });
     })
     .catch((err) => {
+      console.log(err)
       res.status(403).json({ status: false, error: err });
     });
 };
