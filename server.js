@@ -8,7 +8,7 @@ const path = require("path")
 dotenv.config();
 const db = require("./connections/connections.js")
 
-console.log(db())
+// console.log(db())
 // connectDB()
 
 app.use(cors({ origin:"https://crypto-backend-girw.onrender.com", credentials: true }));
