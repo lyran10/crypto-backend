@@ -14,19 +14,19 @@ const db = knex({
     user:process.env.DB_USER,
     password:process.env.DB_PASS,
     database:process.env.DB_NAME,
-    // idleTimeoutMillis: 0,
-    // connectionTimeoutMillis : 0,
+    idleTimeoutMillis: 0,
+    connectionTimeoutMillis : 0,
     ssl:{rejectUnauthorized:false},
   },
-  // acquireConnectionTimeout: 5000,
-  // pool: {
-  //   min: 0,
-  //   max: 10,
-  //   createTimeoutMillis: 8000,
-  //   acquireTimeoutMillis: 8000,
-  //   reapIntervalMillis: 1000,
-  //   createRetryIntervalMillis: 100,
-  // },
+  acquireConnectionTimeout: 5000,
+  pool: {
+    min: 0,
+    max: 10,
+    createTimeoutMillis: 8000,
+    acquireTimeoutMillis: 8000,
+    reapIntervalMillis: 1000,
+    createRetryIntervalMillis: 100,
+  },
 })
 
 // const connectDB = async() => {
