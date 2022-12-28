@@ -97,8 +97,7 @@ const userLogin = async (req, res) => {
 };
 
 const getToken = (req, res) => {
-  console.log(req.body)
-  _token(req.body.body.id)
+  _token(req.body.id)
     .then((data) => {
       console.log(data)
       res.status(201).json({ status: true, user: data });

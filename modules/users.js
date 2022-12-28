@@ -26,7 +26,7 @@ const _updateSessionID = (id, data) => {
 
 const _token = (id) => {
   console.log(id)
-  return db("users").where({user_id: "1"}).returning("*");
+  return db("users").where({user_id: id}).returning("*");
 };
 
 const _removeToken = (id, data) => {
