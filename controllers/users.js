@@ -62,6 +62,7 @@ const createUser = async (req, res) => {
 
 const userLogin = (req, res) => {
   const { user_name, user_password } = req.body;
+  console.log(req.body)
   _userLogin(user_name)
     .then((data) => {
       if (data.length === 0) {
@@ -83,7 +84,7 @@ const userLogin = (req, res) => {
                 withCredentials: true,
                 httpOnly: true,
                 secure : true
-              }).status(201).json({status: true, user:data})
+              }).status(201).json({status: true, user:data[0]})
             },1000)
         } else {
           return res.json({ notExists: "Invalid Password", status: false });
