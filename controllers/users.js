@@ -60,7 +60,7 @@ const createUser = async (req, res) => {
   });
 };
 
-const userLogin = async (req, res) => {
+const userLogin = (req, res) => {
   const { user_name, user_password } = req.body;
   _userLogin(user_name)
     .then((data) => {
@@ -83,7 +83,7 @@ const userLogin = async (req, res) => {
               withCredentials: true,
               httpOnly: true,
               secure : true
-            }).send({status: true, user:data[0]})
+            }).status(201).json({status: true, user:data[0]})
         } else {
           return res.json({ notExists: "Invalid Password", status: false });
         }
