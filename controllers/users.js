@@ -62,10 +62,8 @@ const createUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
   const { user_name, user_password } = req.body;
-  console.log(req.body)
   _userLogin(user_name)
     .then((data) => {
-      console.log(data)
       if (data.length === 0) {
         console.log("user does not exist")
         return res.json({ notExists: "Invalid User Name", status: false });
