@@ -77,13 +77,14 @@ const userLogin = (req, res) => {
             console.log()
             )
             .catch((err) => console.log(err));
-
-          return res
-            .cookie("token", token.refToken, {
-              withCredentials: true,
-              httpOnly: true,
-              secure : true
-            }).status(201).json({status: true, user:data[0]})
+            setTimeout(() => {
+              return res
+              .cookie("token", token.refToken, {
+                withCredentials: true,
+                httpOnly: true,
+                secure : true
+              }).status(201).json({status: true, user:data[0]})
+            },1000)
         } else {
           return res.json({ notExists: "Invalid Password", status: false });
         }
