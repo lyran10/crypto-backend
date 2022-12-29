@@ -14,6 +14,7 @@ const _createUser = (obj) => {
 };
 
 const _userLogin = async(user) => {
+  console.log(user)
     return await db("users").where({ user_name: user }).returning("*")
   
 };
