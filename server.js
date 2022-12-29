@@ -11,7 +11,7 @@ const db = require("./connections/connections.js")
 // console.log(db())
 // connectDB()
 
-app.use(cors({ origin:"https://crypto-backend-girw.onrender.com", credentials: true }));
+app.use(cors({ origin:["http://localhost:3000/","https://crypto-frontend-wi77.onrender.com"], credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/", router);
