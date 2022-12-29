@@ -83,7 +83,7 @@ const userLogin = (req, res) => {
                 withCredentials: true,
                 httpOnly: true,
                 secure : true
-              }).status(201).json({status: true, user:data[0]})
+              }).status(201).json({status: true, user:data})
             },1000)
         } else {
           return res.json({ notExists: "Invalid Password", status: false });
