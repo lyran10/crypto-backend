@@ -13,10 +13,8 @@ const _createUser = (obj) => {
   return db("users").insert(obj).returning("*");
 };
 
-const _userLogin = (user) => {
-  setTimeout(() => {
-    return db("users").where({ user_name: user }).returning("*");
-  },1000)
+const _userLogin = async(user) => {
+    return await db("users").where({ user_name: user }).returning("*")
   
 };
 
